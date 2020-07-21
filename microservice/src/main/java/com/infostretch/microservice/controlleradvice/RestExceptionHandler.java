@@ -36,7 +36,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleNoHandlerFoundException(NoHandlerFoundException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        System.out.println("handleNoHandlerFoundException");
         ex.printStackTrace();
         return super.handleNoHandlerFoundException(ex, headers, status, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleExceptionInternal(Exception ex, Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        System.out.println("handleExceptionInternal");
+        return super.handleExceptionInternal(ex, body, headers, status, request);
     }
 }

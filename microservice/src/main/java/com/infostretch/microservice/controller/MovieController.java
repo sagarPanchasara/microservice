@@ -1,5 +1,6 @@
 package com.infostretch.microservice.controller;
 
+import com.infostretch.microservice.aspect.PremiumContent;
 import com.infostretch.microservice.domain.Movie;
 import com.infostretch.microservice.service.MovieService;
 import lombok.NonNull;
@@ -28,6 +29,7 @@ public class MovieController {
     }
 
     @GetMapping("/{id}")
+    @PremiumContent
     public ResponseEntity<Movie> get(@PathVariable String id) {
         Optional<Movie> optional = movieService.get(id);
         if (optional.isPresent())
