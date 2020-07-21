@@ -22,7 +22,7 @@ public interface SubscriptionClient {
             return new SubscriptionClient() {
                 @Override
                 public boolean isValidSubscriber(String userId) {
-                    log.error("isValidSubscriber");
+                    log.error("isValidSubscriber: error {}", throwable.getMessage());
                     return false;
                 }
             };
