@@ -11,11 +11,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/movie/?page=0&size=5&sort=release_date,asc",
+					"raw": "localhost:9091/movie/?page=0&size=5&sort=release_date,asc",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9091",
 					"path": [
 						"movie",
 						""
@@ -47,13 +47,19 @@
 			"name": "Movie - Get by Id",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "1",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:8080/movie/5f10292ee1c37f214de91c22",
+					"raw": "localhost:9091/movie/5f10292ee1c37f214de91c22",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9091",
 					"path": [
 						"movie",
 						"5f10292ee1c37f214de91c22"
@@ -132,6 +138,47 @@
 					"path": [
 						"movie",
 						"5f10292ee1c37f214de91c22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription - Subscribe",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New Movie\",\r\n    \"ratings\": 10,\r\n    \"release_date\": \"2020-02-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/subscription/subscribe?userId=2&planId=2",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"subscription",
+						"subscribe"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "2"
+						},
+						{
+							"key": "planId",
+							"value": "2"
+						}
 					]
 				}
 			},
