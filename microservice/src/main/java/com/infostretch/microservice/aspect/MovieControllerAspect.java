@@ -28,9 +28,9 @@ public class MovieControllerAspect {
     @Around("execution(* com.infostretch.microservice.controller.*.* (..))")
     public Object myAspect(ProceedingJoinPoint joinPoint) throws Throwable {
         final String requestId = UUID.randomUUID().toString();
-        Thread currentThread = Thread.currentThread();
-        final String currentThreadName = currentThread.getName();
-        currentThread.setName(requestId);
+//        Thread currentThread = Thread.currentThread();
+//        final String currentThreadName = currentThread.getName();
+//        currentThread.setName(requestId);
         long startTime = System.currentTimeMillis();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         Enumeration<String> headerNames = request.getHeaderNames();
@@ -60,7 +60,7 @@ public class MovieControllerAspect {
             output = ErrorResponse.unauthorized().toResponseEntity();
         }
         log.info("Response - RequestId: {}, Response: {}, Time taken: {}ms", requestId, output, System.currentTimeMillis() - startTime);
-        currentThread.setName(currentThreadName);
+//        currentThread.setName(currentThreadName);
         return output;
     }
 
