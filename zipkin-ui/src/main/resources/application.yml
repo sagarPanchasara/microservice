@@ -1,0 +1,19 @@
+server:
+  port: 9411
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/zipkin?autoReconnect=true
+    username: root
+    password: toor
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    continue-on-error: true
+  sleuth:
+    enabled: false
+
+zipkin:
+  storage:
+    type: mysql
