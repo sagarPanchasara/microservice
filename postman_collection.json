@@ -183,6 +183,117 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Gateway - Subscription - Is Valid",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8762/subscription-service/subscription/isValid/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8762",
+					"path": [
+						"subscription-service",
+						"subscription",
+						"isValid",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway - Movie - List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8762/movie-service/movie/?page=0&size=5&sort=release_date,asc",
+					"host": [
+						"localhost"
+					],
+					"port": "8762",
+					"path": [
+						"movie-service",
+						"movie",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						},
+						{
+							"key": "sort",
+							"value": "release_date,asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Service - Refresh Config",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "localhost:9091/actuator/refresh",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"actuator",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway - Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"root\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8762/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8762",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
