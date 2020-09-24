@@ -23,19 +23,18 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("/")
-    public ResponseEntity<?> list(Pageable page) {
+    public ResponseEntity<?> list(Pageable page, @RequestHeader String userId) {
         log.info("This is test logger for list controller");
+        log.info("Found UserId: " + userId);
         return ResponseEntity.ok(movieService.list(page));
     }
 
     @GetMapping("/{id}")
     @PremiumContent
-    public ResponseEntity<Movie> get(@PathVariable String id) {
+    public ResponseEntity<Movie> get(@PathVariable String id, @RequestHeader String userId) {
+        log.info("Found UserId: " + userId);
         Optional<Movie> optional = movieService.get(id);
-        if (optional.isPresent())
-            return ResponseEntity.ok(optional.get());
-        else
-            return ResponseEntity.notFound().build();
+        return optional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/")
